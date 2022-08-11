@@ -18,7 +18,7 @@
             <origin xyz="0 0 0.0" rpy="1.57 0 1.57"/>    
             <!-- 颜色 -->
             <material name="car_color">
-                <color rgba="0 0.0 1 0.9"/>
+                <color rgba="0 0.0 1 1"/>
                 
             </material> 
         </visual>
