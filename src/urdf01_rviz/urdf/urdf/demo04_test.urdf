@@ -1,5 +1,4 @@
 <robot name ="my_car">
-    <!-- 1 add base_footprint -->
     <link name="base_footprint">
         <visual >
             <geometry>
@@ -23,9 +22,6 @@
             </material>
         </visual>       
     </link>
-    <!-- 
-        形状 圆柱 radius0.3m length0.07m lidi0.06m
-     -->
     
     <!-- <joint name="base_link2base_footprint" type="fix">
         <origin xyz="0.0 0.0 0.06" rpy="0.0 0.0 0.0"/>
@@ -33,5 +29,4 @@
         <child link="base_link"/>
         <axis xyz="0.0 0.0 0.0"/>
     </joint> -->
-
 </robot>
