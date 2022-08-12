@@ -1,0 +1,37 @@
+<robot name ="my_car">
+    <!-- 1 add base_footprint -->
+    <link name="base_footprint">
+        <visual >
+            <geometry>
+                <sphere radius="0.001"/> 
+            </geometry>
+            <material name="color">
+                <color rgba="0 0 0 1.0"/>
+            </material>
+        </visual>
+        
+    </link>
+    <!-- base link 底盘-->
+    <link name="base_link">
+        <visual>
+            <!-- <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/> -->
+            <geometry>
+                <cylinder radius="0.30" length="0.0"/> 
+            </geometry>
+            <material name="base_link_color">
+                <color rgba="0.0 0.0 0.0 1.0"/>               
+            </material>
+        </visual>       
+    </link>
+    <!-- 
+        形状 圆柱 radius0.3m length0.07m lidi0.06m
+     -->
+    
+    <!-- <joint name="base_link2base_footprint" type="fix">
+        <origin xyz="0.0 0.0 0.06" rpy="0.0 0.0 0.0"/>
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+        <axis xyz="0.0 0.0 0.0"/>
+    </joint> -->
+
+</robot>
