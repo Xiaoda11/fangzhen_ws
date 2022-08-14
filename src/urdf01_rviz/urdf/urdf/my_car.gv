@@ -1,0 +1,20 @@
+digraph G {
+node [shape=box];
+"base_footprint" [label="base_footprint"];
+"base_link" [label="base_link"];
+"laser_radar" [label="laser_radar"];
+"wheel_1" [label="wheel_1"];
+"wheel_2" [label="wheel_2"];
+"wheel_3" [label="wheel_3"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"base_footprint" -> "base_link2base_footprint" [label="xyz: 0 0 0.095 \nrpy: 0 -0 0"]
+"base_link2base_footprint" -> "base_link"
+"base_link" -> "laser_radar2base_link" [label="xyz: 0 0 0.055 \nrpy: 0 -0 0"]
+"laser_radar2base_link" -> "laser_radar"
+"base_link" -> "whell_1_to_base_link" [label="xyz: -0.14 0 -0.055 \nrpy: 0 -0 0"]
+"whell_1_to_base_link" -> "wheel_1"
+"base_link" -> "whell_2_to_base_link" [label="xyz: 0.07 0.121244 -0.055 \nrpy: 0 -0 0"]
+"whell_2_to_base_link" -> "wheel_2"
+"base_link" -> "whell_3_to_base_link" [label="xyz: 0.07 -0.121244 -0.055 \nrpy: 0 -0 0"]
+"whell_3_to_base_link" -> "wheel_3"
+}
