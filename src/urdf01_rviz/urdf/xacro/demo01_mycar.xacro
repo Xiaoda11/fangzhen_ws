@@ -1,11 +1,8 @@
 <!--
-    使用 xacro 优化 URDF 版的小车底盘实现：
-
     实现思路:
     1.将一些常量、变量封装为 xacro:property
       比如:PI 值、小车底盘半径、离地间距、车轮半径、宽度 ....
     2.使用 宏 封装驱动轮以及支撑轮实现，调用相关宏生成驱动轮与支撑轮
-
 -->
 <!-- 根标签，必须声明 xmlns:xacro -->
 <robot name="my_car" xmlns:xacro="http://www.ros.org/wiki/xacro">

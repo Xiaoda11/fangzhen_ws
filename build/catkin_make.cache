@@ -1,2 +1,2 @@
-urdf01_rviz
+urdf01_rviz:urdf02_gazebo
 -DCATKIN_DEVEL_PREFIX=/home/ljm/fangzhen_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ljm/fangzhen_ws/install -G Unix Makefiles

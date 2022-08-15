@@ -132,6 +132,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/ljm/fangzhen_ws/build/gtest/cmake_install.cmake")
   include("/home/ljm/fangzhen_ws/build/urdf01_rviz/cmake_install.cmake")
+  include("/home/ljm/fangzhen_ws/build/urdf02_gazebo/cmake_install.cmake")
 
 endif()
 
