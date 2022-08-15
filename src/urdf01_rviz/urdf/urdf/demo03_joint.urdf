@@ -43,24 +43,42 @@
     <child link="base_link"/>
     <origin xyz="0 0 0.095"/>
   </joint>
-  <!-- Laser Radar link -->
+  
+  <link name="support_laser_radar">
+    <visual>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <cylinder length="0.04" radius="0.015"/>
+      </geometry>
+      <material name="support_laser_radar_color">
+        <color rgba="0.1 0.1 0.1 1.0"/>
+      </material>
+    </visual>
+  </link>
+  <!-- support2base_link  -->
+  <joint name="support_laser_radar2base_link" type="fixed">
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.055"/>
+    <parent link="base_link"/>
+    <child link="support_laser_radar"/>
+    <axis xyz="0.0 0.0 0.0"/>
+  </joint>
   <link name="laser_radar">
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <cylinder length="0.04" radius="0.025"/>
+        <cylinder length="{$ laser_radar_length}" radius="0.025"/>
       </geometry>
       <material name="laser_radar_color">
         <color rgba="0.7 0.7 0.7 1.0"/>
       </material>
     </visual>
   </link>
-  <!-- laser_radar2base_link  -->
-  <joint name="laser_radar2base_link" type="fixed">
-    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.055"/>
+  <!-- laser_radar2support_laser_radar -->
+  <joint name="laser_radar2support_laser_radar" type="continuous">
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.04"/>
     <parent link="base_link"/>
     <child link="laser_radar"/>
-    <axis xyz="0.0 0.0 0.0"/>
+    <axis xyz="0.0 0.0 1"/>
   </joint>
   <!-- 支撑轮半径 -->
   <link name="1_wheel">
@@ -77,7 +95,7 @@
   <joint name="1_wheel2base_link" type="continuous">
     <parent link="base_link"/>
     <child link="1_wheel"/>
-    <origin xyz="-0.14 0 -0.065"/>
+    <origin xyz="-0.14 0 -0.055"/>
     <axis xyz="1 1 0"/>
   </joint>
   <link name="2_wheel">
@@ -94,7 +112,7 @@
   <joint name="2_wheel2base_link" type="continuous">
     <parent link="base_link"/>
     <child link="2_wheel"/>
-    <origin xyz="0.07 0.121244 -0.065"/>
+    <origin xyz="0.07 0.121244 -0.055"/>
     <axis xyz="1 1 0"/>
   </joint>
   <link name="3_wheel">
@@ -111,7 +129,7 @@
   <joint name="3_wheel2base_link" type="continuous">
     <parent link="base_link"/>
     <child link="3_wheel"/>
-    <origin xyz="0.07 -0.121244 -0.065"/>
+    <origin xyz="0.07 -0.121244 -0.055"/>
     <axis xyz="1 1 0"/>
   </joint>
 </robot>
