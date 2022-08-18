@@ -1,4 +1,5 @@
 <robot name ="my_car">
+   
     <!-- 添加base_footprint -->
     <link name="base_footprint">
         <visual >
