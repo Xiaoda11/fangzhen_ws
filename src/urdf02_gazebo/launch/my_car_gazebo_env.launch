@@ -4,7 +4,7 @@
     <param name="robot_description" command="$(find xacro)/xacro $(find urdf02_gazebo)/urdf/mycar.xacro"/>   
     <!-- 启动gazebo仿真 -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
-        
+        <arg name="world_name" value="$(find urdf02_gazebo)/worlds/box_house.world"/>
     </include>
     <!-- 在gazebo加入模型 -->
     <node name="spawn_model" pkg="gazebo_ros" type="spawn_model"  args="-urdf -model car -param robot_description">
