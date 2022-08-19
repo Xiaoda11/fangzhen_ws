@@ -18,7 +18,7 @@
     <xacro:property name="base_footprint_radius" value="0.001" /> <!-- base_footprint 半径  -->
     <xacro:property name="base_link_radius" value="0.15" /> <!-- base_link 半径 -->
     <xacro:property name="base_link_length" value="0.07" /> <!-- base_link 长 -->
-    <xacro:property name="base_link_weight" value="2" />
+    <xacro:property name="base_link_weight" value="3" />
     <xacro:property name="earth_space" value="0.06" /> <!-- 离地间距 -->
     <!-- 底盘 -->
     <link name="base_footprint">
@@ -74,7 +74,7 @@
                 <cylinder radius="0.015" length="${support_laser_radar_length }"/> 
             </geometry>
         </collision>
-        <xacro:cylinder_inertial_matrix m="0.05"  r="0.015" h="${support_laser_radar_length }" />
+        <xacro:cylinder_inertial_matrix m="0.5"  r="0.015" h="${support_laser_radar_length }" />
     </link>
     <gazebo reference="support_laser_radar">
       <material>Gazebo/Grey</material>
@@ -104,7 +104,7 @@
                 <cylinder radius="0.025" length="${laser_radar_length}"/> 
             </geometry>
         </collision>
-        <xacro:cylinder_inertial_matrix m="0.1"  r="0.025" h="${laser_radar_length}" />       
+        <xacro:cylinder_inertial_matrix m="0.2"  r="0.025" h="${laser_radar_length}" />       
     </link>
     <gazebo reference="laser_radar">
       <material>Gazebo/Black</material>
@@ -117,10 +117,10 @@
         <axis xyz="0.0 0.0 1"/>
     </joint>
     <!--wheel link -->
-     <xacro:property name="wheel_radius" value="0.04" /> <!-- 支撑轮半径 -->
-
+     <xacro:property name="wheel_radius" value="0.04" /> <!-- 轮半径 -->
+     
     <!-- wheel宏 -->
-    <xacro:macro name="add_wheel" params="name flag1 flag2" >
+    <xacro:macro name="add_wheel" params="name flag1 flag2 zyd_x zyd_y zyd_z" >
       <link name="${name}_wheel">
         <visual>
             <geometry>
@@ -147,12 +147,14 @@
           <parent link="base_link" />
           <child link="${name}_wheel" />
           <origin xyz="${flag1} ${flag2} ${-(base_link_length / 2 + earth_space / 2)+0.01}" />
-          <axis xyz="1 1 0" />
+          <axis xyz="${zyd_x} ${zyd_y} ${zyd_z}" />
+          <dynamics damping="0.4" friction="1.0"/>
+          
       </joint>
     </xacro:macro>
-    <xacro:add_wheel name="l" flag1="-0.14" flag2="0"/>
-    <xacro:add_wheel name="r" flag1="0.07" flag2="0.121244"/>
-    <xacro:add_wheel name="b" flag1="0.07" flag2="-0.121244"/>
+    <xacro:add_wheel name="l" flag1="-0.14" flag2="0"  zyd_x="1" zyd_y="1" zyd_z="0"/>
+    <xacro:add_wheel name="r" flag1="0.07" flag2="0.121244" zyd_x="1" zyd_y="1" zyd_z="0"/>
+    <xacro:add_wheel name="b" flag1="0.07" flag2="-0.121244" zyd_x="1" zyd_y="1" zyd_z="0"/>
 
     <!-- 摄像头相关的 xacro 文件 -->
 
@@ -179,6 +181,8 @@
                 <box size="${camera_length} ${camera_width} ${camera_height}" />
             </geometry>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      
+
         </collision>
         <xacro:Box_inertial_matrix m="${camera_m}" l="${camera_length}" w="${camera_width}" h="${camera_height}" />
     </link>
@@ -190,7 +194,11 @@
     </joint>
     <gazebo reference="camera">
         <material>Gazebo/Grey</material>
+         
     </gazebo>
+    <xacro:include filename="gazebo/move.xacro"/>
+    <xacro:include filename="gazebo/laser.xacro"/>
+    <xacro:include filename="gazebo/camera.xacro"/>
 </robot>
 
 
